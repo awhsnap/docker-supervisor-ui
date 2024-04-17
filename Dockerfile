@@ -16,12 +16,9 @@ RUN apk update && \
     pip install supervisor && \
     rm -rf /var/cache/apk/*
 
-
-# Expose the ports for Supervisor web UI (default is 9001) and any other service ports you need
-
-
 # Copy Supervisor configuration files
 COPY supervisord.conf /etc/supervisord.conf
+COPY conf.d/ /etc/supervisor/conf.d
 
 # Set up directories for Supervisor
 RUN mkdir -p /var/log/supervisor
